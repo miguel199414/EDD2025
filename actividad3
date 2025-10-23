@@ -11,7 +11,7 @@ typedef struct passenger {
     char doc_number[MAX_DOCNUM];
     char last_name[MAX_APELLIDOS];
     int genero; // 1: Masculino, 2: Femenino, 3: No binario
-    int nivel;  // 1/2: Económico, 3: Oro, 4: Platino
+    int nivel;  // 1: Económico, 2: Oro, 3: Platino
     struct passenger* next;
 } Passenger;
 
@@ -52,9 +52,9 @@ const char* obtener_genero(int g) {
 
 const char* obtener_nivel(int nivel) {
     switch (nivel) {
-        case 1: case 2: return "Económico";
-        case 3: return "Oro";
-        case 4: return "Platino";
+        case 1: return "Económico";
+        case 2: return "Oro";
+        case 3: return "Platino";
         default: return "Desconocido";
     }
 }
@@ -102,10 +102,10 @@ int agregar_pasajero(List *l) {
     } while (nuevo->genero < 1 || nuevo->genero > 3);
 
     do {
-        printf("Nivel (1: Económico, 2: Económico, 3: Oro, 4: Platino): ");
+        printf("Nivel (1: Económico, 2: Oro, 3: Platino): ");
         scanf("%d", &nuevo->nivel);
         while (getchar() != '\n');
-    } while (nuevo->nivel < 1 || nuevo->nivel > 4);
+    } while (nuevo->nivel < 1 || nuevo->nivel > 3);
 
     nuevo->next = NULL;
 
